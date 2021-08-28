@@ -9,10 +9,11 @@ generator client {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   title     String
   body      String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  Comment   Comment[]
 }
 
 model Contact {
@@ -20,5 +21,14 @@ model Contact {
   name      String
   email     String
   message   String
+  createdAt DateTime @default(now())
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  name      String
+  body      String   @db.Text
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
   createdAt DateTime @default(now())
 }
