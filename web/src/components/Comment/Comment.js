@@ -13,8 +13,9 @@ const Comment = ({ comment }) => {
       // TODO: delete comment
     }
   }
+
   return (
-    <div className="bg-gray-200 p-8 rounded-lg">
+    <div className="relative bg-gray-200 p-8 rounded-lg">
       <header className="flex justify-between">
         <h2 className="font-semibold text-gray-700">{comment.name}</h2>
         <time className="text-xs text-gray-500" dateTime={comment.createdAt}>
