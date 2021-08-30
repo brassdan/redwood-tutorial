@@ -27,7 +27,7 @@ const CommentForm = ({ postId }) => {
     onCompleted: () => {
       setHasPosted(true)
     },
-    refetchQueries: [{ query: CommentsQuery }],
+    refetchQueries: [{ query: CommentsQuery, variables: { postId } }],
   })
 
   const onSubmit = (input) => {
