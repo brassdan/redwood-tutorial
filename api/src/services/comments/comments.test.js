@@ -1,5 +1,4 @@
 import { comments, createComment, deleteComment } from './comments'
-import { db } from 'api/src/lib/db'
 
 describe('comments', () => {
   scenario('returns all comments for a single post', async (scenario) => {
@@ -32,9 +31,8 @@ describe('comments', () => {
     expect(comment.id).toEqual(scenario.comment.jane.id)
 
     // check that comment with that ID is gone
-    expect(
-      await db.comment.findUnique({ where: { id: scenario.comment.jane.id } })
-    ).toEqual(null)
+    const result = await comments({ postId: scenario.comment.jane.id })
+    expect(result.length).toEqual(0)
   })
 
   scenario('delete throws an error if not authenticated', async (scenario) => {
