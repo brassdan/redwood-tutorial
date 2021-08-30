@@ -9,7 +9,7 @@ export const schema = gql`
   }
 
   type Query {
-    comments: [Comment!]!
+    comments(postId: Int!): [Comment!]!
   }
 
   input CreateCommentInput {
